@@ -2,6 +2,16 @@ category : {
   name : string
 }
 
+// --------- mongo shell ------------------
+
+mongo                     -> masuk ke mongo shell
+show databases            -> lihat seluruh database               ex: admin,bassicdb,db_mern,local.
+use [nama database]       -> masuk ke delam database.             ex: use db_mern
+show collections          -> melihat seluruh collections (tabel)  ex: categories.
+db.nama_collection.find() -> melihat isi dari tabel               ex: db.categories.find()
+
+// ----------------------------------------
+
 image: {
   imageUrl : string
 }
