@@ -5,8 +5,10 @@ module.exports = {
     res.render('admin/dashboard/view_dashboard')
   },
   
-  viewCategory: function (req, res) {
-    res.render('admin/category/view_category')
+  viewCategory: async function (req, res) {
+    const category = await Category.find()
+    // console.log(category)
+    res.render('admin/category/view_category', {category})
   },
 
   addCategory: async (req, res) => {
