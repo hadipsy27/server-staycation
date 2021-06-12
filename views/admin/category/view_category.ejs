@@ -25,8 +25,7 @@
                     <!-- End Page Heading -->
 
                     <!-- DataTables -->
-                    <%- include('table.ejs') %> 
-                    <%- include('add_modal.ejs') %> 
+                    <%- include('table_category.ejs') %> 
                     <!-- End DataTables -->
 
                 </div>
@@ -70,5 +69,21 @@
         </div>
     </div>
 
-    
+    <%- include('add_modal.ejs') %> 
+    <%- include('edit_modal.ejs') %> 
  <%- include('../../partials/js.ejs') %> 
+
+ <script>
+    //  show modal
+    $('#dataTable').on('click', '.button-update', function () {
+        // ambil data name dan id
+        let id = $(this).data('id');
+        let name = $(this).data('name');
+        // console.log(id + name);
+        $('#editModal').modal('show');
+
+        // kirim id dan name melalui class
+        $('.id').val(id);
+        $('.name').val(name);
+    })
+ </script>
