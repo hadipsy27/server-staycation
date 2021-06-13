@@ -2,7 +2,9 @@ const Category = require('../models/Category')
 
 module.exports = {
   viewDashboard: function (req, res) {
-    res.render('admin/dashboard/view_dashboard')
+    res.render('admin/dashboard/view_dashboard', 
+      {title: 'Staycation | Dashboard'}
+    )
   },
   
   viewCategory: async (req, res) => {
@@ -14,7 +16,8 @@ module.exports = {
       
       res.render('admin/category/view_category', {
         category, 
-        alert
+        alert,
+        title: 'Staycation | Category'
       })
     }catch(error){
       res.redirect('/admin/category')
@@ -71,14 +74,14 @@ module.exports = {
   },
 
   viewBank: function (req, res) {
-    res.render('admin/bank/view_bank')
+    res.render('admin/bank/view_bank', {title: 'Staycation | Bank'})
   },
 
   viewItem: (req, res) => {
-    res.render('admin/item/view_item')
+    res.render('admin/item/view_item', {title: 'Staycation | Item'})
   },
 
   viewBooking: (req, res) => {
-    res.render('admin/booking/view_booking')
+    res.render('admin/booking/view_booking', {title: 'Staycation | Booking'})
   }
 }
