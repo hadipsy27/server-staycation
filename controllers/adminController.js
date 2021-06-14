@@ -75,15 +75,17 @@ module.exports = {
     }
   },
 
-  viewBank: function (req, res) {
+  viewBank: async function (req, res) {
     try {
+      const bank = await Bank.find()
       const alertMessage = req.flash('alertMessage')
       const alertStatus = req.flash('alertStatus')
       const alert = {message: alertMessage, status: alertStatus}
       res.render('admin/bank/view_bank', 
       {
         title: 'Staycation | Bank',
-        alert
+        alert,
+        bank
       })
     } catch (error) {
       req.flash('alertMessage',`${error.message}`)

@@ -16,21 +16,34 @@
                       <th>Name Bank</th>
                       <th>Nomor Rekening</th>
                       <th>Name</th>
+                      <th>Image</th>
                       <th>Action</th>
                   </tr>
               </thead>
               <tbody>
+                <% for(let i = 0; i < bank.length; i++) { %>
                   <tr>
-                      <td>01</td>
-                      <td>BRI</td>
-                      <td>923875293854713</td>
-                      <td>Andika Suryanto</td>
+                      <td><%= i + 1 %> </td>
+                      <td><%= bank[i].nameBank %> </td>
+                      <td><%= bank[i].nomorRekening %> </td>
+                      <td><%= bank[i].name %> </td>
                       <td>
-                        <a style="margin-left: 15%; color: green;" href="#"><i class="fas fa-edit"></i></a>
-                        <a style="margin-left: 20px; color: red;" href="#"><i class="fas fa-eraser"></i></a>
+                          <img src="http://localhost:3000/<%= bank[i].imageUrl %>" alt="Image" height="70px" width="70px">
+                      </td>
+                      <td>
+                        <form action="/admin/category/<%= bank[i].id %>?_method=DELETE " method="POST">
+                          <a href="javascript:void()" type="button" class="btn btn-primary btn-sm button-update" 
+                          style="margin-right: 3%;" data-id="<%= bank[i].id %>" 
+                          data-name="<%= bank[i].name %>">
+                            <i class="fas fa-edit"></i>
+                          </a>
+
+                          <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                        </form>
                       </td>
                   </tr>
-              </tbody>
+                <% } %> 
+            </tbody>
           </table>
       </div>
   </div>
