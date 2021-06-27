@@ -25,6 +25,12 @@ const itemSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  // satu item mempunyai satu category = object
+  categoryId: {
+    type: ObjectId,
+    ref: 'Category'
+  },
+  // satu item mempunyai banyak image
   imageId: [{
     type: objectId,
     ref: 'Image'
