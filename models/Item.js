@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const { objectId } = mongoose.Schema
+const { ObjectId } = mongoose.Schema
 
 const itemSchema = new mongoose.Schema({
   title: {
@@ -11,8 +11,9 @@ const itemSchema = new mongoose.Schema({
     required: true
   },
   country: {
+    type: String,
     default: "Indonesia",
-    required: true
+    // required: true
   },
   city: {
     type: String,
@@ -22,7 +23,7 @@ const itemSchema = new mongoose.Schema({
     type: Boolean,
     default: false
   },
-  desciption: {
+  description: {
     type: String,
     required: true
   },
@@ -33,15 +34,15 @@ const itemSchema = new mongoose.Schema({
   },
   // satu item mempunyai banyak image
   imageId: [{
-    type: objectId,
+    type: ObjectId,
     ref: 'Image'
   }],
   featureId: [{
-    type: objectId,
+    type: ObjectId,
     ref: 'Feature'
   }],
   activityId: [{
-    type: objectId,
+    type: ObjectId,
     ref: 'Activity'
   }],
 })
