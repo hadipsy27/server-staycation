@@ -79,13 +79,23 @@
         </div>
     </div>
 
+ <%- include('show_modal_feature.ejs') %> 
  <%- include('../../../partials/js.ejs') %> 
 
  <script>
      $(document).ready(function () {
          $('#dataTableActivity').dataTable()
      })
-    // Replace the <textarea id="editor1"> with a CKEditor 4
-    // instance, using default configuration.
+
     CKEDITOR.replace( 'about' ); // nama class dari form add di description
+
+    $('#dataTable').on('click', '.button-update', function () {
+        let id = $(this).data('id');
+        let name = $(this).data('name');
+        let qty = $(this).data('qty');
+        $('#editModal').modal('show');        
+        $('.id').val(id);
+        $('.name').val(name);
+        $('.qty').val(qty);
+    })
 </script>
