@@ -43,7 +43,7 @@
                             <img src="http://localhost:3000/<%= feature[i].imageUrl %>" alt="Image" height="70px" width="70px">
                         </td>
                         <td>
-                          <form action="/admin/feature/<%= feature[i].id %>?_method=DELETE " method="POST">
+                          <form action="/admin/item/<%= itemId %>/feature/<%= feature[i].id %>?_method=DELETE " method="POST">
                             <a href="javascript:void()" type="button" class="btn btn-primary btn-sm button-update" style="margin-right: 3%;" 
                             data-id="<%= feature[i].id %>" data-name="<%= feature[i].name %>" data-qty="<%= feature[i].qty %>" >
                               <i class="fas fa-edit"></i>
