@@ -6,6 +6,7 @@ const auth = require('../middlewares/auth')
 router.get('/signin', adminController.viewSignin)
 router.post('/signin', adminController.actionSignin)
 router.use(auth) // jadi jika admin mau ke dashboard harus melewati auth terlebih dahaulu
+router.get('/logout', adminController.actionLogout)
 router.get('/dashboard', adminController.viewDashboard)
 
 // endpoint category

@@ -55,10 +55,21 @@ module.exports = {
     }
   },
 
+
+  actionLogout: async (req, res) => {
+    req.session.destroy()
+    res.redirect('/admin/signin')
+  },
+
   viewDashboard: function (req, res) {
-    res.render('admin/dashboard/view_dashboard', 
-      {title: 'Staycation | Dashboard'}
-    )
+    try {
+      res.render('admin/dashboard/view_dashboard', 
+        {title: 'Staycation | Dashboard',
+        user: req.session.user
+      })
+    } catch (error) {
+      
+    }
   },
   
   viewCategory: async (req, res) => {
@@ -71,7 +82,8 @@ module.exports = {
       res.render('admin/category/view_category', {
         category, 
         alert,
-        title: 'Staycation | Category'
+        title: 'Staycation | Category',
+        user: req.session.user
       })
     }catch(error){
       res.redirect('/admin/category')
@@ -138,7 +150,8 @@ module.exports = {
       {
         title: 'Staycation | Bank',
         alert,
-        bank
+        bank,
+        user: req.session.user
       })
     } catch (error) {
       req.flash('alertMessage',`${error.message}`)
@@ -233,7 +246,8 @@ module.exports = {
         category,
         alert,
         item,
-        action: 'view'
+        action: 'view',
+        user: req.session.user
       })
     } catch (error) {
       req.flash('alertMessage',`${error.message}`)
@@ -252,7 +266,8 @@ module.exports = {
           title,
           price,
           city,
-          description: about
+          description: about,
+          user: req.session.user
         }
         const item = await Item.create(newItem)
         category.itemId.push({ _id: item._id }) // itemId diambil dari collection category
@@ -290,7 +305,8 @@ module.exports = {
         title: 'Staycation | Show Image Item',
         alert,
         item,
-        action: 'show image'
+        action: 'show image',
+        user: req.session.user
       })
     } catch (error) {
       req.flash('alertMessage',`${error.message}`)
@@ -316,7 +332,8 @@ module.exports = {
         alert,
         item,
         category,
-        action: 'edit'
+        action: 'edit',
+        user: req.session.user
       })
     } catch (error) {
       req.flash('alertMessage',`${error.message}`)
@@ -406,7 +423,8 @@ module.exports = {
         alert,
         itemId,
         feature,
-        activity
+        activity,
+        user: req.session.user
       })
     } catch (error) {
       req.flash('alertMessage',`${error.message}`)
@@ -428,7 +446,8 @@ module.exports = {
         name,
         qty,
         itemId,
-        imageUrl : `images/${req.file.filename}`
+        imageUrl : `images/${req.file.filename}`,
+        user: req.session.user
       })
 
       const item = await Item.findOne({ _id: itemId })
@@ -510,7 +529,8 @@ module.exports = {
         name,
         type,
         itemId,
-        imageUrl : `images/${req.file.filename}`
+        imageUrl : `images/${req.file.filename}`,
+        user: req.session.user
       })
 
       const item = await Item.findOne({ _id: itemId })
@@ -578,6 +598,6 @@ module.exports = {
   },
 
   viewBooking: (req, res) => {
-    res.render('admin/booking/view_booking', {title: 'Staycation | Booking'})
+    res.render('admin/booking/view_booking', {title: 'Staycation | Booking', user: req.session.user})
   }
 }
