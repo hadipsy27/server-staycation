@@ -27,6 +27,10 @@ const itemSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  unit: {
+    type: String,
+    default: 'Night'
+  },
   // satu item mempunyai satu category = object
   categoryId: {
     type: ObjectId,
