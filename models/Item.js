@@ -29,7 +29,11 @@ const itemSchema = new mongoose.Schema({
   },
   unit: {
     type: String,
-    default: 'Night'
+    default: 'night'
+  },
+  sumBooking: {
+    type: Number,
+    default: 0
   },
   // satu item mempunyai satu category = object
   categoryId: {
