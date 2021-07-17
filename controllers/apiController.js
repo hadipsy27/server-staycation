@@ -43,6 +43,16 @@ module.exports = {
           }
         }
 
+        const testimonial = {
+          _id: "asd1293uasdas1",
+          umageUrl: "images/testimonial1.jpg",
+          name: "Happy Family",
+          rate: 4.55,
+          content: "What a great trip with family and I should try again next time soon....",
+          familyName: "Hadi",
+          familyOccupation: "Software Enginer"
+        }
+
       res.status(200).json({ 
         hero: {
           treasure: treasure.length,
@@ -51,7 +61,8 @@ module.exports = {
         },
         treasure,
         mostPicked,
-        category
+        category,
+        testimonial
       })
     } catch (error) {
       console.log(error)
